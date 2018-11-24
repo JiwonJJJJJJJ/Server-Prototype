@@ -1,0 +1,38 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head>
+
+<body>
+	<div class"button">
+		<input type="button" id="list" value="GetData"/>
+	</div>
+	<div class="text">
+		<ul id ="myList">
+		</ul>
+		<br />
+	</div>
+</body>
+
+<script>
+	$(document).ready(function(){
+		$("#list").click(function(){
+			$.ajax({
+				url:"http://localhost:3000/log.text",
+				datatype:"text",
+				sucess:function(data){
+					split_line=data.split("\n")
+					x=parseInt(split_line.length)
+					y=parseInt($("ul#mylist li").length)
+					if(x!==y){
+						split.line.forEach(function(element){
+							var node=document.createElement("LI");
+							var textnode=document.createTextNode(element)
+							node.appendchild(textnode)
+							document.getElementById("myList").appendchild(node);
+						});
+					}
+				}
+			});
+		});			
+	});
+</script>
